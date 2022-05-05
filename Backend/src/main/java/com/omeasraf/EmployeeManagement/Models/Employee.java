@@ -1,4 +1,6 @@
-package com.omeasraf.EmployeeManagement.model;
+package com.omeasraf.EmployeeManagement.Models;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,6 +15,7 @@ public class Employee implements Serializable {
     private String firstName;
     private String lastName;
     private String email;
+    @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSSX")
     private String jobTitle;
     private Date joinDate;
     private String phoneNumber;
@@ -31,6 +34,11 @@ public class Employee implements Serializable {
         this.imageURL = imageURL;
         this.employeeID = employeeID;
     }
+
+    public Employee() {
+
+    }
+
 
     public Long getId() {
         return id;
