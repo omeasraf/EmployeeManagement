@@ -13,23 +13,6 @@ For building and running the application you need:
 
 ## How To run?
 ### Backend
-#### Running the application locally
-
-There are several ways to run a Spring Boot application on your local machine. One way is to execute the `main` method in the `com.omeasraf.springbootsample.Applic# Employee Management
-
-An employee management tool built using Java SpringBoot and Angular
-
-## Requirements
-
-For building and running the application you need:
-
-- [Java](https://www.oracle.com/java/technologies/downloads/)
-- [Maven](https://maven.apache.org)
-- [Angular](https://angular.io)
-- [Node.js](https://nodejs.org/en/)
-
-## How To run?
-### Backend
 
 There are several ways to run a Spring Boot application on your local machine. One way is to execute the `main` method in the `com.omeasraf.EmployeeManagement.EmployeeManagementApplication` class from your IDE.
 
