@@ -6,9 +6,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
-public interface EmployeeRepository  extends JpaRepository<Employee, Long> {
+public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     @Transactional
     void deleteEmployeeById(Long id);
+
     @Transactional
     Optional<Employee> findEmployeeById(Long id);
+
+    @Transactional
+    Optional<Employee> findEmployeeByEmail(String email);
 }

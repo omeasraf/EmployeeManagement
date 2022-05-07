@@ -1,0 +1,92 @@
+<form #addForm="ngForm" class="form-container">
+  <mat-form-field appearance="outline">
+    <mat-label>First Name</mat-label>
+    <input
+      matInput
+      type="text"
+      name="firstName"
+      id="firstName"
+      placeholder="First Name"
+      required
+      ngModel="{{ employee?.firstName }}"
+    />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Last Name</mat-label>
+    <input
+      matInput
+      type="text"
+      name="lastName"
+      id="lastName"
+      placeholder="Last Name"
+      required
+      ngModel="{{ employee?.lastName }}"
+    />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Email</mat-label>
+    <input
+      matInput
+      type="email"
+      name="email"
+      id="email"
+      placeholder="Email"
+      required
+      ngModel="{{ employee?.email }}"
+    />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label for="jobTitle">Job title</mat-label>
+    <input
+      type="text"
+      matInput
+      name="jobTitle"
+      id="jobTile"
+      placeholder="Job title"
+      required
+      ngModel="{{ employee?.jobTitle }}"
+    />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label for="phoneNumber">Phone Number</mat-label>
+    <input
+      type="text"
+      matInput
+      name="phoneNumber"
+      id="phoneNumber"
+      placeholder="Phone Number"
+      required
+      ngModel="{{ employee?.phoneNumber }}"
+    />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label for="phone">Image URL</mat-label>
+    <input
+      type="text"
+      matInput
+      name="imageURL"
+      id="imageURL"
+      placeholder="Image URL"
+      required
+      ngModel="{{ employee?.imageURL }}"
+    />
+  </mat-form-field>
+
+  <div class="modal-footer">
+    <button mat-button color="primary" type="button" (click)="dismiss()">
+      Close
+    </button>
+    <button
+      mat-button
+      color="primary"
+      [disabled]="addForm.invalid"
+      type="submit"
+      [mat-dialog-close]="addForm"
+    >
+      Save changes
+    </button>
+  </div>
+</form>

@@ -1,8 +1,11 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Employee } from './Employee';
 import { EmployeeService } from './employee.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AddModalComponent } from './add-modal/add-modal.component';
+import { DeleteModalComponent } from './delete-modal/delete-modal.component';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +18,10 @@ export class AppComponent implements OnInit {
   public deleteEmployee: Employee | null = null;
   public editEmployee: Employee | null = null;
 
-  constructor(private employeeService: EmployeeService) {}
+  constructor(
+    private employeeService: EmployeeService,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.getEmployees();
@@ -51,6 +57,39 @@ export class AppComponent implements OnInit {
     }
     container!.appendChild(button);
     button.click();
+  }
+
+  openDialog(employee: Employee | null): void {
+    const dialogRef = this.dialog.open(AddModalComponent, {
+      data: employee,
+      width: '100vh',
+      height: '80vh',
+      maxWidth: '650px',
+      maxHeight: '900px',
+    });
+    dialogRef.afterClosed().subscribe((result: NgForm) => {
+      if (result != undefined && result.valid) {
+        if (employee != null) {
+          result.value.id = employee.id;
+          result.value.employeeID = employee.employeeID;
+
+          this.onUpdateEmloyee(result);
+        } else {
+          this.onAddEmloyee(result);
+        }
+      }
+    });
+  }
+
+  deleteDialog(employee: Employee): void {
+    const dialogRef = this.dialog.open(DeleteModalComponent, {
+      data: employee,
+    });
+    dialogRef.afterClosed().subscribe((result: boolean) => {
+      if (result != undefined && result) {
+        this.onDeleteEmloyee(employee.id);
+      }
+    });
   }
 
   public onDeleteEmloyee(id: number | undefined): void {
